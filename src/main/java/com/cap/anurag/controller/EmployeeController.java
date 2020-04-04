@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -43,10 +44,12 @@ public class EmployeeController {
 	        return responseEntity;
 	    }
 
-	@PostMapping("/update")
-	public ResponseEntity<Employee> update(@RequestBody Employee employee) throws RecordNotFoundException {
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@PutMapping("/update")
+	public ResponseEntity<Boolean> update(@RequestBody Employee employee) throws RecordNotFoundException {
 		employee = service.update(employee);
-		return new ResponseEntity<Employee>(employee, new HttpHeaders(), HttpStatus.OK);
+		ResponseEntity<Boolean> responseEntity= new ResponseEntity(true, HttpStatus.OK);
+		return responseEntity;
 	}
 
 	@DeleteMapping("/delete/{id}")
