@@ -29,9 +29,6 @@ public class EmployeeController {
 		return new ResponseEntity<List<Employee>>(list, new HttpHeaders(), HttpStatus.OK);
 	}
 	
-	public UpdatedMethod() {
-		
-	}
 
 	@GetMapping("/find/{id}")
 	public ResponseEntity<Employee> getEmployeeById(@PathVariable("id") Integer id) throws RecordNotFoundException {
